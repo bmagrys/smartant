@@ -1,0 +1,2 @@
+defmodule Smartant do
+end

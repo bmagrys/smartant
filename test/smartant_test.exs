@@ -1,0 +1,8 @@
+defmodule SmartantTest do
+  use ExUnit.Case
+  doctest Smartant
+
+  test "the truth" do
+    assert 1 + 1 == 2
+  end
+end
