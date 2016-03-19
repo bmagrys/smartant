@@ -1,4 +1,4 @@
-# elixir-smartant
+# smartant
 
 ## Description
 
