@@ -26,15 +26,15 @@ defmodule MatrixHelper do
 
   @spec do_multiply([list], [list]) :: number
   defp do_multiply(
-  _a_matrix = [ a_row | a_tail ],
-  b_matrix = [ b_row | _b_tail ])
+    _a_matrix = [ a_row | a_tail ],
+    b_matrix = [ b_row | _b_tail ])
   when is_list(a_row) and is_list(a_tail) and is_list(b_row),
   do: [do_multiply(a_row, b_matrix) | do_multiply(a_tail, b_matrix)]
 
   @spec do_multiply(list, [list]) :: number
   defp do_multiply(
-  a_row = [ _a_head | _a_tail ],
-  _b_matrix = [ b_row | b_tail ]),
+    a_row = [ _a_head | _a_tail ],
+    _b_matrix = [ b_row | b_tail ]),
   do: [ multiply_matrix_row(a_row, b_row) | do_multiply(a_row, b_tail) ]
 
   @spec do_multiply(any, any) :: []

@@ -6,7 +6,6 @@ defmodule Neuron do
   act_fun: :hardlim ]
 
   import TransferFunctions, only: [eval_function: 1]
-  import MatrixHelper, only: [multiply: 2]
 
   @doc """
     Evaluate neuron activation

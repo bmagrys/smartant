@@ -31,7 +31,7 @@ defmodule TransferFunctions do
         { :ok, Map.get(map, :net_input) |> linear() }
       %{ act_fun: :satlin }   ->
         { :ok, Map.get(map, :net_input) |> saturating_linear() }
-      %{ act_fun: :satlins }   ->
+      %{ act_fun: :satlins }  ->
         { :ok, Map.get(map, :net_input) |> symmetric_saturating_linear() }
       %{ act_fun: :logsig }   ->
         { :ok, Map.get(map, :net_input) |> log_sigmoid() }
