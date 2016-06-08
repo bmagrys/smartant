@@ -59,6 +59,7 @@ defmodule SingleLayerPerceptronTest do
     neuron_3 = %Neuron{ weight: [1, -1], bias: 0, act_fun: :purelin }
     { :ok, result } = Neuron.eval(neuron_3, output)
     assert result === 2
+
   end
 
 end

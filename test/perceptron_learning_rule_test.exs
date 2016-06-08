@@ -3,16 +3,32 @@ defmodule PerceptronLearningRuleTest do
   doctest PerceptronLearningRule
 
   test "test learning" do
-    input = [ -1, -0.9, -0.8, -0.7, -0.6, -0.5 ]
-    expected_result = [-.9602, -.5770, -.0729, .3771, .6405, .6600]
-    r = 1
-    s1 = 1
-    q = 6
-    w1 = [ 0, 1, 3, 2, 1, 1 ]
-    b1 = [ 2, 1, -3, 2, 1, 0 ]
-    
+    IO.puts "\n\n##########################"
+    IO.puts "Test 1: \n"
 
-
+    layer = %SingleLayerPerceptron{ neurons: [%Neuron{ weight: [0, 0], bias: 0, act_fun: :hardlim }] }
+    IO.inspect input = [ [[-1.0], [1.0]], [[-1], [-1]], [[0], [0]], [[1], [0]] ]
+    expected_result = [[[1]],[[1]],[[0]],[[0]]]
+    IO.inspect PerceptronLearningRule.learn({ input, expected_result }, layer)
   end
 
+  test "test learning 2" do
+    IO.puts "\n\n##########################"
+    IO.puts "Test 2: \n"
+
+    layer = %SingleLayerPerceptron{ neurons: [%Neuron{ weight: [0, 1], bias: 1, act_fun: :hardlim }] }
+    IO.inspect input = [ [[1], [0]], [[-1], [2]], [[1], [2]] ]
+    expected_result = [[[0]],[[0]],[[1]]]
+    IO.inspect PerceptronLearningRule.learn({ input, expected_result }, layer)
+  end
+
+  test "test learning 3" do
+    IO.puts "\n\n##########################"
+    IO.puts "Test 3: \n"
+
+    layer = %SingleLayerPerceptron{ neurons: [%Neuron{ weight: [1, 0], bias: 0.5, act_fun: :hardlim }] }
+    IO.inspect input = [ [[-1], [-1]], [[0], [0]], [[-1], [1]] ]
+    expected_result = [[[0]],[[0]],[[1]]]
+    IO.inspect PerceptronLearningRule.learn({ input, expected_result }, layer)
+  end
 end

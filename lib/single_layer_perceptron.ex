@@ -1,6 +1,6 @@
 defmodule SingleLayerPerceptron do
 
-  defstruct [neurons: []]
+  defstruct [neurons: [ %Neuron{ }] ]
 
   @doc """
     Evaluate activation of all layer neurons

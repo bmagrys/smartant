@@ -69,4 +69,110 @@ defmodule MatrixHelper do
   @spec tuples_to_lists([]) :: []
   defp tuples_to_lists(arr = []), do: arr
 
+  @doc """
+
+  """
+  @spec addition(list(list), list(list)) :: list(list)
+  def addition(matrix_a, matrix_b) do
+    do_addition(matrix_a, matrix_b)
+  end
+
+  @spec do_addition([], []) :: []
+  defp do_addition([], []), do: []
+
+  @spec do_addition(list(list), list(list)) :: list(list)
+  defp do_addition(
+      [ a_row | a_tail ],
+      [ b_row | b_tail ]
+  ) do
+      [ do_addition_v(a_row, b_row) | do_addition(a_tail, b_tail) ]
+  end
+
+  @spec do_addition_v([], []) :: []
+  defp do_addition_v([], []), do: []
+
+  @spec do_addition_v(list, list) :: list
+  defp do_addition_v(
+      [ a_h | a_t ],
+      [ b_h | b_t ]
+  ) do
+      [ a_h + b_h | do_addition_v(a_t, b_t) ]
+  end
+
+  @doc """
+
+  """
+  def subtraction(matrix_a, matrix_b) do
+    do_subtraction(matrix_a, matrix_b)
+  end
+
+  @spec do_subtraction([], []) :: []
+  defp do_subtraction([], []), do: []
+
+  @spec do_subtraction(list(list), list(list)) :: list(list)
+  defp do_subtraction(
+      [ a_row | a_tail ],
+      [ b_row | b_tail ]
+  ) do
+      [ do_subtraction_v(a_row, b_row) | do_subtraction(a_tail, b_tail) ]
+  end
+  @spec do_subtraction_v([], []) :: []
+  defp do_subtraction_v([], []), do: []
+
+  @spec do_subtraction_v(list, list) :: list
+  defp do_subtraction_v(
+      [ a_h | a_t ],
+      [ b_h | b_t ]
+  ) do
+      [ a_h - b_h | do_subtraction_v(a_t, b_t) ]
+  end
+
+  @doc """
+
+  """
+  @spec wrap_elements(list) :: list(list)
+  def wrap_elements(list) do
+    do_wrap_elements(list)
+  end
+
+  @spec do_wrap_elements(list) :: list(list)
+  defp do_wrap_elements([ head | tail ]) do
+    [ List.wrap(head) | do_wrap_elements(tail) ]
+  end
+
+  @spec do_wrap_elements([]) :: []
+  defp do_wrap_elements([]), do: []
+
+  @doc """
+
+  """
+  @spec scalar_array_prod(number, list(list)) :: list(list)
+  def scalar_array_prod(x, [[y_h] | y_t]) do
+  [ [x * y_h] | do_scalar_array_prod(x, y_t) ]
+  end
+
+  @spec do_scalar_array_prod(number, list(list)) :: list(list)
+  defp do_scalar_array_prod(x, [[y_h] | y_t]) do
+  [ [x * y_h] | do_scalar_array_prod(x, y_t) ]
+  end
+
+  @spec do_scalar_array_prod(number, []) :: []
+  defp do_scalar_array_prod(_x, []), do: []
+
+  @doc """
+
+  """
+  @spec length(list) :: number
+  def length(list) do
+    do_length(list)
+  end
+
+  @spec do_length(list) :: number
+  defp do_length([_ | l_t]) do
+    1 + do_length(l_t)
+  end
+
+  @spec do_length(list) :: number
+  defp do_length([]), do: 0
+
 end
